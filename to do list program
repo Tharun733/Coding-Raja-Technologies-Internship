@@ -1,0 +1,53 @@
+def main():
+    # Initialize an empty list to store tasks
+    todo_list = []
+
+    while True:
+        print("\n===== To-Do List =====")
+        print("1. Add Task")
+        print("2. View Tasks")
+        print("3. Mark Task as Completed")
+        print("4. Delete Task")
+        print("5. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            task = input("Enter task: ")
+            todo_list.append(task)
+            print("Task added successfully!")
+        elif choice == '2':
+            if todo_list:
+                print("\nTasks:")
+                for index, task in enumerate(todo_list, start=1):
+                    print(f"{index}. {task}")
+            else:
+                print("No tasks yet.")
+        elif choice == '3':
+            if todo_list:
+                task_index = int(input("Enter the index of the task to mark as completed: ")) - 1
+                if 0 <= task_index < len(todo_list):
+                    print(f"Task '{todo_list[task_index]}' marked as completed!")
+                    del todo_list[task_index]
+                else:
+                    print("Invalid index.")
+            else:
+                print("No tasks yet.")
+        elif choice == '4':
+            if todo_list:
+                task_index = int(input("Enter the index of the task to delete: ")) - 1
+                if 0 <= task_index < len(todo_list):
+                    del todo_list[task_index]
+                    print("Task deleted successfully!")
+                else:
+                    print("Invalid index.")
+            else:
+                print("No tasks yet.")
+        elif choice == '5':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+if __name__ == "__main__":
+    main()
